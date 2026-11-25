@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ROS / catkin
+build/
+devel/
+install/
+.catkin_tools/
+logs/
+*.bag
+
+# PX4 / flight logs / binaries
+*.ulg
+*.px4
+*.bin
+*.elf
+*.hex
+*.log
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local secrets / machine-specific files
+.env
+*.local

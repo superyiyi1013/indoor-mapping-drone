@@ -1,0 +1,41 @@
+<launch>
+  <!-- D435i depth stream -> x400_perception front distance node. -->
+  <arg name="depth_width" default="640"/>
+  <arg name="depth_height" default="480"/>
+  <arg name="depth_fps" default="15"/>
+  <arg name="depth_topic" default="/camera/depth/image_rect_raw"/>
+  <arg name="distance_topic" default="/x400/obstacle/front_distance"/>
+  <arg name="mavros_distance_topic" default="/mavros/distance_sensor/laser_1_sub"/>
+  <arg name="mavros_obstacle_topic" default="/mavros/obstacle/send"/>
+  <arg name="publish_mavros_range" default="true"/>
+  <arg name="publish_mavros_obstacle" default="true"/>
+  <arg name="respawn" default="true"/>
+  <arg name="enable_color" default="false"/>
+  <arg name="enable_infra1" default="false"/>
+  <arg name="enable_infra2" default="false"/>
+  <arg name="enable_gyro" default="false"/>
+  <arg name="enable_accel" default="false"/>
+
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <arg name="enable_depth" value="true"/>
+    <arg name="enable_color" value="$(arg enable_color)"/>
+    <arg name="enable_infra1" value="$(arg enable_infra1)"/>
+    <arg name="enable_infra2" value="$(arg enable_infra2)"/>
+    <arg name="enable_gyro" value="$(arg enable_gyro)"/>
+    <arg name="enable_accel" value="$(arg enable_accel)"/>
+    <arg name="unite_imu_method" value="linear_interpolation"/>
+    <arg name="depth_width" value="$(arg depth_width)"/>
+    <arg name="depth_height" value="$(arg depth_height)"/>
+    <arg name="depth_fps" value="$(arg depth_fps)"/>
+  </include>
+
+  <include file="$(find x400_perception)/launch/front_obstacle_distance.launch">
+    <arg name="depth_topic" value="$(arg depth_topic)"/>
+    <arg name="distance_topic" value="$(arg distance_topic)"/>
+    <arg name="mavros_distance_topic" value="$(arg mavros_distance_topic)"/>
+    <arg name="mavros_obstacle_topic" value="$(arg mavros_obstacle_topic)"/>
+    <arg name="publish_mavros_range" value="$(arg publish_mavros_range)"/>
+    <arg name="publish_mavros_obstacle" value="$(arg publish_mavros_obstacle)"/>
+    <arg name="respawn" value="$(arg respawn)"/>
+  </include>
+</launch>

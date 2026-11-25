@@ -1,0 +1,39 @@
+# ROS build/devel
+build/
+devel/
+install/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.egg-info/
+*.egg
+*.py,cover
+.pybuild/
+.pytest_cache/
+
+# Clion
+.idea/
+*.iml
+
+# VSCode
+.vscode/
+
+# Not for onboard (mavlink or other)
+mavlink_auto_flight/
+
+# ros_catkin_ws_lite root only (keep src/)
+ros_catkin_ws_lite/.catkin_workspace
+ros_catkin_ws_lite/README_X400_LITE.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# realsense-ros internal git (submodule)
+realsense-ros/.git/
+
+# Logs
+*.log

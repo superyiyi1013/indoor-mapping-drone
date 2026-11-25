@@ -1,0 +1,29 @@
+<launch>
+  <arg name="depth_topic" default="/camera/depth/image_rect_raw"/>
+  <arg name="distance_topic" default="/x400/obstacle/front_distance"/>
+  <arg name="mavros_distance_topic" default="/mavros/distance_sensor/laser_1_sub"/>
+  <arg name="mavros_obstacle_topic" default="/mavros/obstacle/send"/>
+  <arg name="publish_mavros_range" default="true"/>
+  <arg name="publish_mavros_obstacle" default="true"/>
+  <arg name="respawn" default="true"/>
+
+  <node pkg="x400_perception"
+        type="front_obstacle_distance_node.py"
+        name="front_obstacle_distance"
+        output="screen"
+        respawn="$(arg respawn)"
+        respawn_delay="2">
+    <param name="depth_topic" value="$(arg depth_topic)"/>
+    <param name="distance_topic" value="$(arg distance_topic)"/>
+    <param name="mavros_distance_topic" value="$(arg mavros_distance_topic)"/>
+    <param name="mavros_obstacle_topic" value="$(arg mavros_obstacle_topic)"/>
+    <param name="publish_mavros_range" value="$(arg publish_mavros_range)"/>
+    <param name="publish_mavros_obstacle" value="$(arg publish_mavros_obstacle)"/>
+    <param name="fov_horizontal_deg" value="87.0"/>
+    <param name="min_distance_m" value="0.10"/>
+    <param name="max_distance_m" value="10.0"/>
+    <param name="roi_ratio" value="0.30"/>
+    <param name="obstacle_scan_bins" value="72"/>
+    <param name="frame_id" value="d435i_front_link"/>
+  </node>
+</launch>

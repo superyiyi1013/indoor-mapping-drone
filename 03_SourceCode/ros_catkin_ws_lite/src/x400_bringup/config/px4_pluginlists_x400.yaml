@@ -1,0 +1,37 @@
+plugin_blacklist:
+# common
+- safety_area
+# extras not used by the X400 validation flow
+- image_pub
+- vibration
+- wheel_odometry
+
+plugin_whitelist:
+- 3dr_radio
+- actuator_control
+- altitude
+- command
+- distance_sensor
+- ftp
+- geofence
+- global_position
+- hil
+- home_position
+- imu
+- local_position
+- manual_control
+- nav_controller_output
+- param
+- rallypoint
+- rc_io
+- setpoint_accel
+- setpoint_attitude
+- setpoint_position
+- setpoint_raw
+- setpoint_trajectory
+- setpoint_velocity
+- sys_status
+- sys_time
+- vfr_hud
+- waypoint
+- wind_estimation

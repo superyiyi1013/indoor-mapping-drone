@@ -1,0 +1,23 @@
+# X400 MAVROS parameter overlay.
+#
+# This file is loaded in addition to MAVROS' default px4_config.yaml.
+# It adds a dedicated forward-facing D435i distance input so QGC can
+# distinguish it from the downward optical-flow rangefinder.
+
+distance_sensor:
+  # MAVROS 1.20 reliably creates subscribers for its built-in *_sub entries.
+  # Reuse laser_1_sub for the forward D435i Range input and identify it by
+  # MAVLink DISTANCE_SENSOR id=42 / orientation 0 in QGC.
+  laser_1_sub:
+    subscriber: true
+    id: 42
+    orientation: NONE
+    covariance: 0
+    horizontal_fov_ratio: 1.0
+    vertical_fov_ratio: 0.63
+
+obstacle:
+  # PX4 Collision Prevention expects obstacle directions in a vehicle body
+  # frame. MAVROS defaults OBSTACLE_DISTANCE to GLOBAL, which is visible on
+  # the MAVLink link but not usable as front obstacle data for CP.
+  mav_frame: BODY_FRD

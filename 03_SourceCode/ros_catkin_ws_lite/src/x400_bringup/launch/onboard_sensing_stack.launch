@@ -1,0 +1,25 @@
+<launch>
+  <!-- Bring up MAVROS and the D435i front-distance sensing chain. -->
+  <arg name="fcu_url" default="/dev/ttyTHS0:921600"/>
+  <arg name="gcs_url" default="udp-b://@14550"/>
+  <arg name="distance_topic" default="/x400/obstacle/front_distance"/>
+  <arg name="mavros_distance_topic" default="/mavros/distance_sensor/laser_1_sub"/>
+  <arg name="mavros_obstacle_topic" default="/mavros/obstacle/send"/>
+  <arg name="publish_mavros_range" default="true"/>
+  <arg name="publish_mavros_obstacle" default="true"/>
+  <arg name="respawn_mavros" default="true"/>
+
+  <include file="$(find x400_bringup)/launch/mavros_px4_t3.launch">
+    <arg name="fcu_url" value="$(arg fcu_url)"/>
+    <arg name="gcs_url" value="$(arg gcs_url)"/>
+    <arg name="respawn_mavros" value="$(arg respawn_mavros)"/>
+  </include>
+
+  <include file="$(find x400_bringup)/launch/d435i_front_distance.launch">
+    <arg name="distance_topic" value="$(arg distance_topic)"/>
+    <arg name="mavros_distance_topic" value="$(arg mavros_distance_topic)"/>
+    <arg name="mavros_obstacle_topic" value="$(arg mavros_obstacle_topic)"/>
+    <arg name="publish_mavros_range" value="$(arg publish_mavros_range)"/>
+    <arg name="publish_mavros_obstacle" value="$(arg publish_mavros_obstacle)"/>
+  </include>
+</launch>

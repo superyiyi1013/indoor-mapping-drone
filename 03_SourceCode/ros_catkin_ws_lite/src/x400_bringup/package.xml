@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>x400_bringup</name>
+  <version>0.1.0</version>
+  <description>X400 onboard computer bringup for MAVROS, D435i, and front obstacle sensing.</description>
+
+  <maintainer email="x400@example.com">X400 Project</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>bash</exec_depend>
+  <exec_depend>mavros</exec_depend>
+  <exec_depend>mavros_extras</exec_depend>
+  <exec_depend>mavros_msgs</exec_depend>
+  <exec_depend>realsense2_camera</exec_depend>
+  <exec_depend>roslaunch</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>x400_perception</exec_depend>
+
+  <export/>
+</package>

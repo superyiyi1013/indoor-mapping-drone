@@ -1,0 +1,19 @@
+* text=auto eol=lf
+
+*.sh text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.launch text eol=lf
+*.xml text eol=lf
+*.params text eol=lf
+
+*.ulg binary
+*.px4 binary
+*.bin binary
+*.dae binary
+*.stl binary
+*.png binary
+*.jpg binary
+*.jpeg binary
